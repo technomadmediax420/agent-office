@@ -22,6 +22,8 @@ and jump into any of them together. Every GitHub repo is a floor of the building
 
 [**Run locally**](#run-locally) · [**Deploy to AWS**](#deploy-to-aws-ec2) · [**Azure**](#deploy-to-azure) · [**Railway**](#deploy-to-railway) · [**Fly.io**](#deploy-to-flyio) · [**Dokploy**](#deploy-to-dokploy) · [**Coolify**](#deploy-to-coolify) · [**Any server**](#deploy-to-any-ubuntu-or-debian-server) · [**Add users**](#add-users) · [**Controls**](#controls) · [**Features**](docs/features.md) · [**How it works**](docs/how-it-works.md)
 
+An [autonomous delivery release gate](docs/autonomous-delivery.md) is under development. Its source module can evaluate signed review and test evidence, but it is not connected to worker tasks, GitHub merges, or publishing yet.
+
 ```sh
 curl -fsSL https://raw.githubusercontent.com/AgentSystemLabs/agent-office/main/install.sh | bash
 ```
