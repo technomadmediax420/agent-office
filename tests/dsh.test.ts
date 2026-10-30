@@ -490,7 +490,10 @@ test('the patch keeps the floor DSH sessions under the office, and argv puts the
   const patch = writeDshPatch(f.data);
   const body = readFileSync(patch, 'utf8');
   assert.match(body, /session-persistence-jsonl/);
-  assert.ok(body.includes(dshSessionsRoot(f.data)));
+  // The generated YAML uses a JSON string scalar: Windows backslashes are escaped.
+  const root = body.split(/\r?\n/).find((line) => /^\s+root: /.test(line));
+  assert.ok(root, 'the session-persistence patch declares its root');
+  assert.equal(JSON.parse(root.replace(/^\s+root: /, '')), dshSessionsRoot(f.data));
   assert.deepEqual(dshArgs({ profile: 'acp', patches: [patch], extra: ['--model', 'x'] }), ['--model', 'x', '--profile', 'acp', '--patch', patch]);
   assert.deepEqual(dshArgs({ profile: 'acp' }), ['--profile', 'acp']);
 });
